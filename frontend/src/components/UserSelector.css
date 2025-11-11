@@ -1,0 +1,130 @@
+.user-selector {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: white;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.user-selector-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.user-selector-dropdown {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.user-select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.user-select:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.user-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.user-select option {
+  background: #333;
+  color: white;
+  padding: 0.5rem;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.current-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.user-avatar {
+  font-size: 2.5rem;
+  line-height: 1;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.unread-badge {
+  background: #ff4757;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-selector {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .current-user-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .user-avatar {
+    font-size: 2rem;
+  }
+  
+  .user-details {
+    text-align: center;
+  }
+}

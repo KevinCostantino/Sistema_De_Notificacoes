@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste UTF-8 - Sistema de Notificações</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .result { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        textarea { width: 100%; height: 200px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste UTF-8 - Sistema de Notificações</h1>
+    
+    <h2>1. Criar notificação com acentos</h2>
+    <button onclick="testarUTF8()">🇧🇷 Criar Notificação PT-BR</button>
+    
+    <h2>2. Listar notificações</h2>
+    <button onclick="listarNotificacoes()">📋 Listar Notificações</button>
+    
+    <div id="resultado"></div>
+    
+    <h2>Resposta da API:</h2>
+    <textarea id="resposta" readonly></textarea>
+
+    <script>
+        const API_BASE = 'http://localhost:3001/api';
+        const USER_ID = '673e4b8f9a1b2c3d4e5f6789';
+        
+        function mostrarResultado(msg, sucesso = true) {
+            document.getElementById('resultado').innerHTML = 
+                `<div class="result ${sucesso ? 'success' : 'error'}">${msg}</div>`;
+        }
+        
+        function mostrarResposta(data) {
+            document.getElementById('resposta').value = JSON.stringify(data, null, 2);
+        }
+        
+        async function testarUTF8() {
+            try {
+                const notificacao = {
+                    userId: USER_ID,
+                    title: "🇧🇷 Notificação com Acentuação",
+                    message: "Esta mensagem contém caracteres especiais do português: ação, informação, coração, criação, atenção, configuração. Também temos: ç, ã, õ, é, í, ó, ú, à, â, ê!",
+                    type: "success",
+                    priority: "high"
+                };
+                
+                const response = await fetch(`${API_BASE}/notifications`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                    body: JSON.stringify(notificacao)
+                });
+                
+                const data = await response.json();
+                mostrarResposta(data);
+                
+                if (data.success) {
+                    mostrarResultado(`✅ Notificação criada! ID: ${data.data._id}`);
+                } else {
+                    mostrarResultado(`❌ Erro: ${data.message}`, false);
+                }
+            } catch (error) {
+                mostrarResultado(`❌ Erro de rede: ${error.message}`, false);
+            }
+        }
+        
+        async function listarNotificacoes() {
+            try {
+                const response = await fetch(`${API_BASE}/notifications/user/${USER_ID}?limit=3`);
+                const data = await response.json();
+                mostrarResposta(data);
+                
+                if (data.success && data.data.length > 0) {
+                    const primeira = data.data[0];
+                    const temAcentos = /[àáâãäçèéêëìíîïñòóôõöùúûüý]/i.test(primeira.title + primeira.message);
+                    
+                    if (temAcentos) {
+                        mostrarResultado(`✅ UTF-8 funcionando! Título: "${primeira.title}"`);
+                    } else {
+                        mostrarResultado(`⚠️ Sem acentos encontrados na primeira notificação`);
+                    }
+                } else {
+                    mostrarResultado(`❌ Nenhuma notificação encontrada`, false);
+                }
+            } catch (error) {
+                mostrarResultado(`❌ Erro de rede: ${error.message}`, false);
+            }
+        }
+    </script>
+</body>
+</html>

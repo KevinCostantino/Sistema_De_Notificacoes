@@ -1,0 +1,135 @@
+.create-notification-trigger {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-notification-form {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+.form-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.notification-form {
+  padding: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row:last-of-type {
+  margin-bottom: 2rem;
+}
+
+/* Single column for certain rows */
+.form-row:nth-child(1),
+.form-row:nth-child(2),
+.form-row:nth-child(3) {
+  grid-template-columns: 1fr;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.char-count {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  color: #666;
+  background: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.form-textarea {
+  padding-bottom: 2rem; /* Space for character count */
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .create-notification-trigger {
+    justify-content: stretch;
+  }
+  
+  .create-notification-trigger .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .form-header,
+  .notification-form {
+    padding: 1rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animation for form appearance */
+.create-notification-form {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
