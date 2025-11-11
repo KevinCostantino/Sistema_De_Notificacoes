@@ -1,7 +1,0 @@
-{
-  "userId": "673e4b8f9a1b2c3d4e5f6792",
-  "title": "Teste de Correção de Caracteres Corrompidos",
-  "message": "Simulando caracteres que podem aparecer corrompidos: batată (batatão), coraă (coração), águă (água), lítĭo (lítio), păo (pão), măo (mão), irmăo (irmão), alemăo (alemão), capităo (capitão), entăo (então).",
-  "type": "warning",
-  "priority": "high"
-}

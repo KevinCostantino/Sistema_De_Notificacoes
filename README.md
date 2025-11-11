@@ -270,30 +270,13 @@ REACT_APP_API_URL=http://localhost:3001/api
 
 ## ✨ Funcionalidades Especiais
 
-### 🇧🇷 Suporte Completo ao Português Brasileiro
-- **Codificação UTF-8** configurada em todos os níveis:
-  - Backend: Express.js com charset UTF-8
-  - Frontend: Meta charset e headers corretos
-  - Banco de dados: MongoDB com configurações UTF-8
-  - Nginx: Charset UTF-8 explícito
-- **Caracteres suportados**: ç, ã, õ, é, í, ó, ú, à, â, ê, acentos e emojis
-- **Teste**: Use o arquivo `test-utf8.html` para verificar o funcionamento
-
 ### 🔄 Atualização Automática da Listagem
 - **Após criar notificação**: Listagem atualiza automaticamente
 - **Estado sincronizado**: Hook `useNotifications` mantém dados atualizados
 - **Feedback visual**: Toast de confirmação e loading states
 - **Performance otimizada**: Atualizações locais de estado quando possível
 
-### 🧪 Testes das Funcionalidades
-```bash
-# Testar UTF-8 e atualização automática
-bash test-features.sh
 
-# Testar no navegador (mais confiável para UTF-8)
-python -m http.server 8080
-# Abra: http://localhost:8080/test-utf8.html
-```
 
 ## 🎯 Decisões Arquiteturais
 
@@ -334,11 +317,6 @@ python -m http.server 8080
   - Toast notifications com diferentes tipos (success, error, info)
   - Auto-preenchimento inteligente do userId
   - Validação em tempo real nos formulários
-- **Internacionalização**:
-  - Suporte nativo ao português brasileiro
-  - Formatação de datas localizada (pt-BR)
-  - Correção automática de caracteres corrompidos (UTF-8 fix)
-  - Textos e mensagens em português
 
 ### Infraestrutura
 - **Contêineres Multi-stage**: Builds otimizados para produção
@@ -370,5 +348,5 @@ Este projeto foi desenvolvido como parte de um desafio técnico.
 
 ---
 
-**Desenvolvido por:** Kevin  
-**Data:** Novembro 2024
+**Desenvolvido por:** Kevin Nicolas Costantino
+**Data:** Novembro 2025
